@@ -63,7 +63,7 @@
                     
                           <td><img style="height: 80px; width: 100px;" src="<?php echo $value['product_image']; ?>"></td>
                           <td><?php echo $value['product_price']; ?></td>
-                          <td><?php echo $value['product_qty']. " /". $value['unit_name']; ?></td>
+                          <td><?php echo $value['product_qty']; ?></td>
                           <td><?php echo $value['created_at']; ?></td>
                
                        

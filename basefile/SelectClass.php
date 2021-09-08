@@ -354,7 +354,7 @@ class SelectClass extends DBconnection{
 	public function sellproduct($farmer_id)
  {
  
-	 $que = "SELECT * FROM order_table left join product_table on order_table.product_id = product_table.product_id WHERE order_table.farmer_id = $farmer_id AND order_table.process=1 order by order_id desc ";
+	 $que = "SELECT * FROM order_table WHERE farmer_id = $farmer_id AND process=1 order by order_id desc ";
 	return $result = self::selectQuery_one($que);
 	   
  
