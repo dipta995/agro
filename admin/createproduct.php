@@ -306,7 +306,7 @@ $start_form = ($page-1) * $per_page;
                           <th>#</th>
                           <th>Title</th>
                           <th>Farmer</th>
-                          <th>Description</th>                     
+                                               
                           <th>image</th>                     
                           <th>price</th>                     
                           <th>qty</th>                     
@@ -327,7 +327,7 @@ $start_form = ($page-1) * $per_page;
                           <td><?php echo $i; ?></td>
                           <td><?php echo $value['product_title']; ?></td>
                           <td><?php echo $value['farmer_name']; ?> <br> Phone: <?php echo $value['farmer_phone']; ?><br> Address: <?php echo $value['farmer_address']; ?></td>
-                          <td><?php echo $select->textshort($value['product_details'],100); ?></td>
+                           
                           <td><img style="height: 80px; width: 100px;" src="../<?php echo $value['product_image']; ?>"></td>
                           <td><?php echo $value['product_price']; ?></td>
                           <td><?php echo $value['product_qty']; ?></td>

@@ -46,7 +46,8 @@
                         </tr>
                       </thead>
                       <tbody>
-                          <h4>Due:</h4>
+                          <h4 style="text-align: center;">Due:</h4>
+                          <h3 style="text-align: center;">
                         <?php
 
                echo $select->sellproduct_cal($farmer_id)." TAKA";
@@ -55,14 +56,14 @@
               foreach ($key as $value) {
                 $i++;
               
-            ?>
+            ?></h3>
                         <tr>
                           <td><?php echo $i; ?></td>
                       
                     
                           <td><img style="height: 80px; width: 100px;" src="<?php echo $value['product_image']; ?>"></td>
                           <td><?php echo $value['product_price']; ?></td>
-                          <td><?php echo $value['product_qty']; ?></td>
+                          <td><?php echo $value['product_qty']. " /". $value['unit_name']; ?></td>
                           <td><?php echo $value['created_at']; ?></td>
                
                        

@@ -10,12 +10,66 @@
                   <h4 class="card-title">Customers</h4> 
                   <p class="card-description">                  
                   </p>
+                  <table class="table table-dark table-bordered">
+
+<thead>
+            
+            </thead>
+            <tbody>
+              
+<?php 
+if (isset($_POST['confirm'])) {
+$update->orderConfirm($_POST);
+}
+if (isset($_GET['sleepno'])) {
+$sleep = $_GET['sleepno'];
+
+$pr  = $select->productlist($sleep);
+$i = 0;
+foreach ($pr as $values) {
+
+
+?>
+              <tr style="color: green;">
+                <td><?php echo $i+=1; ?></td>
+                <td><?php echo $values['product_title']; ?></td>
+                <td><?php echo $total =($values['product_price']*$values['product_qty']); ?> Taka</td>
+                <td><?php echo $values['product_qty'] . " /".$values['unit_name']; ?></td>
        
+                <td><img style="height: 80px; width: 100px;" src="../<?php echo $values['product_image']; ?>"></td>
+
+               
+                <td> 
+                 <?php 
+                  if ($values['process']==0) {
+                    
+                 ?>
+               <form method="post" action="">
+                 <input type="hidden" value="<?php echo $values['order_id']; ?>" name="order_id" id="">
+                 <input class="btn btn-info" type="submit" name="confirm" value="Confirm Now">
+               </form>
+
+               <?php } else { echo "Devivered "; }?>
+              </td>
+                
+               
+              </tr>
+
+              <?php } }?>
+
+
+            </tbody>
+            
+       
+            
+          </table>
+
 
                 </div>
               </div>
             </div>
           </div>
+
           <table class="table table-dark table-bordered">
 
           <thead>
@@ -46,7 +100,7 @@
                              <td>
                              <?php echo $due = $select->sleepamount($value['customer_id']);  ?> Taka
                              <?php if ($due>0) {
-                               echo "<a href='pay.php?customerid=". $value['customer_id']."'>Pay</a>";
+                               echo "<a href='pay.php?customerid=". $value['customer_id']."'>Pay Due</a>";
                              } ?>
                              </td>
                              <td> <a href="?sleepno=<?php echo $value['sleep_no']; ?>">View order</a></td>
@@ -57,58 +111,10 @@
                          
                        
                       <?php } ?>
-           <table class="table table-dark table-bordered">
-
-          <thead>
-                      
-                      </thead>
-                      <tbody>
-                        
-<?php 
- if (isset($_POST['confirm'])) {
-  $update->orderConfirm($_POST);
- }
-if (isset($_GET['sleepno'])) {
-  $sleep = $_GET['sleepno'];
-
-$pr  = $select->productlist($sleep);
-foreach ($pr as $values) {
- 
-
-?>
-                        <tr style="color: green;">
-                          <td><?php echo $i; ?></td>
-                          <td><?php echo $values['product_title']; ?></td>
-                          <td><?php echo $total =($values['product_price']*$values['product_qty']); ?> Taka</td>
-                          <td><?php echo $values['product_qty']; ?></td>
-                 
-                          <td><img style="height: 80px; width: 100px;" src="../<?php echo $values['product_image']; ?>"></td>
-
-                         
-                          <td> 
-                           <?php 
-                            if ($values['process']==0) {
-                              
-                           ?>
-                         <form method="post" action="">
-                           <input type="hidden" value="<?php echo $values['order_id']; ?>" name="order_id" id="">
-                           <input class="btn btn-info" type="submit" name="confirm" value="Confirm Now">
-                         </form>
-
-                         <?php } else { echo "Devivered "; }?>
-                        </td>
-                          
-                         
-                        </tr>
-
-                        <?php } }?>
-
-       
                       </tbody>
-                      
-                 
-                      
-                    </table>
-         
+            
+       
+            
+            </table>
        
               <?php include_once 'footer.php'; ?>

@@ -36,9 +36,9 @@ $customer_id = $_GET['customerid'];
                                     <form method="post" action="" class="forms-sample">
                                         <div class="form-group">
 
-                                            <label>Bkash Number</label>
+                                            <!-- <label>Bkash Number</label> -->
                                             <input type="hidden" value="00000000000" name="account_no">
-                                    <label>OTP Number</label>
+                                    <!-- <label>OTP Number</label> -->
                                             <input type="hidden" value="0000" name="otp">
                                             <label>Amount</label>
                                             <input class="form-control" type="text" readonly value="<?php echo $select->sleepamount($customer_id);  ?>" name="accounts">
